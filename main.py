@@ -16,7 +16,7 @@ def main ():
     while  turnoff == False:
         if int(option) == 0:
             print("Bem vindo ao progama da criptografia\nEscolha suas opcoes:\n")
-            option = input("1)Adicionar usuario\n2)RemoverUsuario\n3)Checar se usuario existe\n4)Fechar\n")
+            option = input("1)Adicionar usuario\n2)Remover Usuario\n3)Checar se usuario existe\n4)Fechar\n")
         elif int(option) == 1:
             userInput = input("Insira o nome do usuario: ")
             userPassword = input("Insira a senha: ")

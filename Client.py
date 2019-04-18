@@ -6,7 +6,7 @@ Created on Wed Apr 17 21:37:49 2019
 @author: pedro
 """
 
-from os.path import getsize 
+from os.path import isfile
 from User import User
 from RSACoding import RSACoding
 
@@ -47,7 +47,7 @@ class Client:
     
     def loadData(self):
         """Carrega o arquivo de dados, descriptografa, e os reinstancia dentro do objeto"""
-        if getsize ("data.txt") > 0: #checa se arquivo esta em branco
+        if isfile("data.txt") == True: #checa se arquivo existe
             file = open("data.txt", "r") #abre arquivo
             data = file.read().split()
             publicKey = tuple(map(int,data[0][1:-1].split(','))) #tira a chave publica do arquivo
