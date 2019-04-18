@@ -5,9 +5,11 @@ Created on Thu Apr 18 01:57:08 2019
 
 @author: pedro
 """
+
 from Client import Client
 
 def main ():
+    """A main garante que a classe Client seja utilizada corretamente"""
     turnoff = False
     underlying = Client()
     option = 0

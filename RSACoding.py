@@ -9,13 +9,16 @@ import support
 
 
 class RSACoding:
+    """Reponsavel pela geracao de chaves, criptografia e descriptografia de mensagens"""
     def __init__(self):
+        """Instancia a classe"""
         print("modulo rsa instanciado") 
         self.publicKey = None
         self.privateKey = None
 
     
-    def setup(self, publicKeyInput = None, privateKeyInput = None):                   
+    def setup(self, publicKeyInput = None, privateKeyInput = None):
+        """Checa se ja existem chaves, ou se elas foram fornecidas, caso contrario, chama a funcao de criar chaves"""                
         if self.publicKey != None and self.privateKey != None:
             print("ja existem chaves, ze")
             return self.publicKey
@@ -33,6 +36,7 @@ class RSACoding:
            
         
     def create_Keys(self, begin,end):
+        """cria novas chaves aleatorias"""
         p = support.randomPrime(begin,end)
         q = support.randomPrime(begin,end)
         n = p*q
@@ -42,6 +46,7 @@ class RSACoding:
         return (n,e,d)
     
     def crypto(self, m, pubKey):
+        """criptgrafa a mensagem"""
         numbers = self.convertToAscii(m)
         aux = list()
         for x in numbers:
@@ -50,6 +55,7 @@ class RSACoding:
     
  
     def decrypto(self, c):
+        """decodifica a mensagem codificada"""
         stuff = self.simpleConvertToAscii(c)
         aux = list()
         for x in stuff:
@@ -57,6 +63,7 @@ class RSACoding:
         return self.backToChar(aux)
     
     def convertToAscii(self, message): 
+        """metodo auxiliar, converte a mensagem em string para uma lista de valores ascii, fazendo tratamento de erros, usada na codificacao"""
         stuff = list()
         for x in range(0, len(message)):
             if ord(message[x]) < 97 and ord(message[x]) != 32:
@@ -68,12 +75,14 @@ class RSACoding:
         return stuff
     
     def simpleConvertToAscii(self, message):
+        """metodo auxiliar, converte a mensagem de string para uma lista de valores ascii, sem fazer tratamento, usada na decodificacao"""
         stuff = list()
         for x in message:
             stuff.append(ord(x))
         return stuff
     
     def backToChar(self, numbers):
+        """metodo auxiliar, transforma a lista de valores ascii de volta para uma string"""
         stuff = list()
         for x in range(0, len(numbers)):
             stuff.append(chr(numbers[x]))
