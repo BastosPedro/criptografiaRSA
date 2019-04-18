@@ -37,8 +37,3 @@ def modInverse(a,m): #calcula o modulo multiplacativo inverso
             return x
     return x
 
-#p = randomPrime (1000,2000)
-#q = randomPrime (1000,2000)
-#Lamb = getLambda(p,q)
-#E = getCoprime(Lamb)
-#D = modInverse(E,Lamb)
