@@ -10,17 +10,24 @@ import support
 
 class RSACoding:
     def __init__(self):
-        print("classe instanciada") 
+        print("modulo rsa instanciado") 
         self.publicKey = None
         self.privateKey = None
 
     
-    def setup(self):                   
-        if self.publicKey is None and self.privateKey is None:
+    def setup(self, publicKeyInput = None, privateKeyInput = None):                   
+        if self.publicKey != None and self.privateKey != None:
+            print("ja existem chaves, ze")
+            return self.publicKey
+        elif publicKeyInput is None and privateKeyInput is None:
             aux = self.create_Keys(100,200)
             self.publicKey = (aux[0],aux[1])
             self.privateKey = (aux[2])
-            print("eita, nem tinham chaves, olha, criando!")
+            print("eita, nem existiam chaves, criando!")
+        else:
+            print("ah, blz, as chaves tao sendo carregadas, tranquilo")
+            self.publicKey = publicKeyInput
+            self.privateKey = privateKeyInput
             
         return self.publicKey
            
@@ -76,10 +83,17 @@ class RSACoding:
 
     
     
-teste = RSACoding()
-teste.setup()
-a = teste.publicKey
-b = teste.privateKey
-texto = "feijao com arroz"
-cripto = teste.crypto(texto, a)
-print(teste.decrypto(cripto))
+#teste = RSACoding()
+#teste.setup()
+#a = teste.publicKey
+#b = teste.privateKey
+#texto = "feijao com arroz"
+#cripto = teste.crypto(texto, a)
+#file = open("Chines.txt", "w")
+#file.write(cripto + '\n')
+#file.write(teste.crypto("arara",a) + '\n')
+#file.write(teste.crypto("banana",a) + '\n')
+#file.write(teste.crypto("mamao",a) + '\n')
+#file.write(teste.crypto("pastel de flango",a) + '\n')
+#file.close()
+#volta = teste.decrypto(cripto)
